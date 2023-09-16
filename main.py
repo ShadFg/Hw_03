@@ -1,16 +1,43 @@
-# This is a sample Python script.
+class Animal:
+    def __init__(self, name, breed, age):
+        self.name = name
+        self.breed = breed
+        self.age = age
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def setAnimalInfo(self, newName, newBreed, newAge):
+        self.name = newName
+        self.breed = newBreed
+        self.age = newAge
 
+    def showAnimalInfo(self):
+        return f"{self.breed} {self.name} {self.age} years"
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Zoo:
+    def __init__(self):
+        self.animals = []
 
+    def addAnimal(self, *args):
+        for animal in args:
+            self.animals.append(animal)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    def removeAnimal(self, *args):
+        for animal in args:
+            self.animals.remove(animal)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    def showZooAnimals(self):
+        if self.animals != []:
+            print("\nIn the zoo:")
+            for animal in self.animals:
+                print(animal.showAnimalInfo())
+        else:
+            print("No animals in the zoo")
+
+zoo = Zoo()
+animal1 = Animal("dog", "shepherd", "4")
+animal2 = Animal("cat", "angora", "1")
+animal3 = Animal("tiger", "common", "3")
+animal4 = Animal("giraffe", "common", "4")
+zoo.addAnimal(animal1, animal2, animal3, animal4)
+zoo.showZooAnimals()
+zoo.removeAnimal(animal2, animal3)
+zoo.showZooAnimals()
